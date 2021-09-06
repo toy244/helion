@@ -1,0 +1,11 @@
+[development]
+> 1%
+
+[production]
+> 1%
+
+[modern]
+last 5 chrome version
+
+[ssr]
+node 12

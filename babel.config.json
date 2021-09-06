@@ -1,0 +1,30 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "bugfixes": true,
+        "spec": false,
+        "loose": false,
+        "modules": "auto",
+        "debug": false,
+        "useBuiltIns": "usage",
+        "corejs": "3.17.2"
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "classic",
+        "throwIfNamespace": true
+      }
+    ],
+    [
+      "@babel/preset-typescript",
+      {
+        "allowDeclareFields": true
+      }
+    ]
+  ],
+  "plugins": []
+}
