@@ -1,13 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const chalk = require('chalk')
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const paths = require('./paths')
 
 module.exports = (isProduction) => ({
   entry: paths.appIndex,
   output: {
-    filename: '[name]',
+    path: paths.appBuild,
+    clean: true,
   },
   cache: {
     type: 'filesystem', // 使用文件缓存
@@ -22,11 +24,22 @@ module.exports = (isProduction) => ({
       { parser: { requireEnsure: false } },
       {
         test: /\.(png|svg|jpg|jpeg|gif|bmp)$/i,
-        type: 'asset/resource',
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024, // 4kb
+          },
+        },
+        generator: {
+          filename: 'assets/images/[hash][ext][query]',
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[hash][ext][query]',
+        },
       },
       {
         test: /\.(js|ts|jsx|tsx)$/i,

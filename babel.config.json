@@ -22,7 +22,8 @@
     [
       "@babel/preset-typescript",
       {
-        "allowDeclareFields": true
+        "allowDeclareFields": true,
+        "allExtensions": true
       }
     ]
   ],
