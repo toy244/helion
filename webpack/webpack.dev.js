@@ -1,4 +1,4 @@
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin")
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 // const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
@@ -7,9 +7,9 @@ const common = require('./webpack.common')
 const paths = require('./paths')
 
 const commonConfig = common(false)
-const smp = new SpeedMeasurePlugin();
+// const smp = new SpeedMeasurePlugin()
 
-module.exports = smp.wrap(merge(commonConfig, {
+module.exports = merge(commonConfig, {
   mode: 'development',
   devtool: 'eval-cheap-module-source-map',
   output: {
@@ -24,5 +24,5 @@ module.exports = smp.wrap(merge(commonConfig, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     // new ReactRefreshWebpackPlugin(),
-  ]
-}))
+  ],
+})

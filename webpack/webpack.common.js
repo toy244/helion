@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const chalk = require('chalk')
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 const paths = require('./paths')
 
@@ -54,6 +55,9 @@ module.exports = (isProduction) => ({
     }),
     new ProgressBarWebpackPlugin({
       format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      async: false,
     }),
   ],
 })
